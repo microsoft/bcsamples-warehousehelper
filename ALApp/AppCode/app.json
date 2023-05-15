@@ -1,10 +1,10 @@
 {
-  "id": "a1f81352-6244-48a4-96a0-a81c5aaaa581",
-  "name": "Take Order Sample",
+  "id": "a1f81352-6244-48a4-96a0-a81c5aabb581",
+  "name": "Warehouse Helper Sample",
   "publisher": "BusinessCentralDemos",
   "version": "1.0.0.0",
-  "brief": "Take Order - you restaurant helper",
-  "description": "Take Order is a simple sample app that shows how to build a high fidelity canvas Power App using Business Central data.",
+  "brief": "Warehouse Helper - you inventory helper",
+  "description": "Warehouse Helper is a simple sample app that shows how to build a high fidelity canvas Power App using Business Central data.",
   "privacyStatement": "",
   "EULA": "",
   "help": "",
@@ -17,8 +17,8 @@
   "runtime": "10.1",
   "idRanges": [
     {
-      "from": 70010,
-      "to": 70020
+      "from": 70020,
+      "to": 70030
     }
   ],
   "resourceExposurePolicy": {

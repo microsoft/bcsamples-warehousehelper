@@ -1,0 +1,345 @@
+"'Item Screen' As screen.'phoneLayout_FluidGridWithHeaderPageLayout_ver3.0'":
+    Fill: =varTheme.secondaryColor
+    OnVisible: |+
+        =UpdateContext({ctxInventory: 0, ctxShowLoadingScreen: false});
+        
+        If(ctxStartScan,
+            UpdateContext({ctxStartScan: false, ctxShowLoadingScreen: true});
+            Select(btnTriggerBarcodeScanner);
+        );
+        
+
+    conItemScreenContent As groupContainer.verticalAutoLayoutContainer:
+        Height: =Parent.Height - 70   
+        LayoutAlignItems: =LayoutAlignItems.Center
+        LayoutDirection: =LayoutDirection.Vertical
+        LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+        LayoutMode: =LayoutMode.Auto
+        Width: =Parent.Width
+        ZIndex: =1
+
+        conItemPageHeader As groupContainer.manualLayoutContainer:
+            FillPortions: =0
+            Height: =100
+            LayoutMinHeight: =112
+            LayoutMinWidth: =250
+            ZIndex: =1
+
+            lblItemScreenTitle As label:
+                Align: =Align.Center
+                Font: =varTheme.font
+                Height: =70
+                Size: =26
+                Text: =varSelectedWarehouse.displayName
+                Width: =Parent.Width
+                Y: =(Parent.Height - Self.Height)/2
+                ZIndex: =1
+
+            imgCloseItemScreen As image:
+                AccessibleLabel: =Self.Tooltip
+                Image: ='dismiss icon'
+                OnSelect: |-
+                    =Set(varScannedItem, Blank());
+                    Select(btnTriggerBarcodeScanner);
+                PaddingBottom: =20
+                PaddingLeft: =20
+                PaddingRight: =20
+                PaddingTop: =20
+                TabIndex: =0
+                Tooltip: =varLabels.Close
+                X: =Parent.Width - Self.Width - 20
+                ZIndex: =2
+
+        conItemImage As groupContainer.manualLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            FillPortions: =0
+            Height: =imgItemImage.Height + 20
+            LayoutMinHeight: =112
+            LayoutMinWidth: =250
+            ZIndex: =2
+
+            htmlItemDetailsImageShadow As htmlViewer:
+                Height: =imgItemImage.Height + 20
+                HtmlText: |+
+                    ="<div style='
+                    height: " & Self.Height - 20 & "px;   
+                    width: " & Self.Width - 20 & "px;   
+                    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1);
+                    margin-left: 10px;
+                    margin-top: 10px;
+                    '></div>
+                    "
+                    
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Tooltip: =
+                Visible: =Not(ctxShowLoadingScreen)
+                Width: =imgItemImage.Width + 20
+                X: =imgItemImage.X + (imgItemImage.Width/2) - (Self.Width/2)
+                Y: =imgItemImage.Y + (imgItemImage.Height/2) - (Self.Height/2)
+                ZIndex: =2
+
+            imgItemImage As image:
+                BorderColor: =RGBA(149, 149, 149, 1)
+                Height: =380 
+                Image: |-
+                    =If(varScannedItem.itemImageText = GUID("00000000-0000-0000-0000-000000000000"),
+                        placeholder
+                        ,
+                        varScannedItem.picture  
+                    )
+                Visible: =Not(ctxShowLoadingScreen)
+                Width: |-
+                    =With({
+                        height: If(varScannedItem.pictureHeight > 0, varScannedItem.pictureHeight, 1),
+                        width: If(varScannedItem.pictureWidth > 0, varScannedItem.pictureWidth, 1)
+                    },
+                        Self.Height * (width/height)
+                    )
+                X: =Parent.Width/2 - Self.Width/2
+                Y: =10
+                ZIndex: =3
+
+        conItemDetails As groupContainer.manualLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            FillPortions: =0
+            Height: =150
+            LayoutMinHeight: =112
+            LayoutMinWidth: =250
+            X: =40
+            Y: =40
+            ZIndex: =3
+
+            Label3 As label:
+                Align: =Align.Center
+                Font: =varTheme.font
+                FontWeight: =FontWeight.Semibold
+                Height: =70
+                Size: =22
+                Text: =varScannedItem.DisplayName
+                Visible: =Not(ctxShowLoadingScreen)
+                Width: =454
+                X: =Parent.Width/2 - Self.Width/2
+                Y: =10
+                ZIndex: =1
+
+            Label3_2 As label:
+                Align: =Align.Center
+                Font: =varTheme.font
+                Size: =17
+                Text: =varScannedItem.baseUnitOfMeasureCode & "   |   " & varScannedItem.number
+                Visible: =Not(ctxShowLoadingScreen)
+                Width: =300
+                X: =Parent.Width/2 - Self.Width/2
+                Y: =70
+                ZIndex: =2
+
+        conInventoryControl As groupContainer.manualLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            FillPortions: =0
+            Height: =80
+            LayoutMinHeight: =112
+            LayoutMinWidth: =250
+            Width: =300
+            X: =Parent.Width/2 - Self.Width/2
+            Y: =715
+            ZIndex: =4
+
+            btnInventoryControlBackground As button:
+                BorderThickness: =0
+                DisplayMode: =DisplayMode.View
+                Fill: =RGBA(255, 255, 255, 1)
+                Height: =80
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                RadiusBottomLeft: =40
+                RadiusBottomRight: =40
+                RadiusTopLeft: =40
+                RadiusTopRight: =40
+                Size: =24
+                Text: =""
+                Width: =300
+                ZIndex: =1
+
+            inpInventoryNumber As text:
+                AccessibleLabel: =Self.Tooltip
+                Align: =Align.Center
+                BorderThickness: =0
+                Color: =varTheme.brandColor
+                Default: =ctxInventory
+                Font: =varTheme.font
+                FontWeight: =FontWeight.Semibold
+                Format: =TextFormat.Number
+                Height: =80
+                OnChange: |
+                    =With({
+                        value: Value(Self.Text)
+                    },
+                        If(Or(value < 0, value > 9999),
+                            Notify("Values have to be between 0 and 9999", NotificationType.Warning); 
+                        );
+                        
+                        UpdateContext({ctxInventory: value, ctxAllowSubmit: true});
+                    );
+                OnSelect: |-
+                    =UpdateContext({ctxAllowSubmit: true})
+                PaddingLeft: =5
+                Size: =36
+                Tooltip: =varLabels.ItemScreen_InventoryToolTip
+                Width: =140
+                X: =Parent.Width/2 - Self.Width/2
+                ZIndex: =7
+
+            imgAddIcon As image:
+                AccessibleLabel: =Self.Tooltip
+                DisplayMode: =If(ctxInventory >= 9999, DisplayMode.Disabled, DisplayMode.Edit)
+                Height: =80
+                Image: ='add icon'
+                OnSelect: |-
+                    =If(ctxInventory < 99999, UpdateContext({ctxInventory: ctxInventory + 1})) 
+                PaddingBottom: =15
+                PaddingRight: =15
+                PaddingTop: =15
+                TabIndex: =0
+                Tooltip: =varLabels.ItemScreen_Add
+                Transparency: =If(ctxInventory >= 9999, 70%, 0)
+                Width: =90
+                X: =Parent.Width - Self.Width
+                ZIndex: =8
+
+            imgSubtractIcon As image:
+                AccessibleLabel: =Self.Tooltip
+                Height: =80
+                Image: ='substract icon'
+                OnSelect: |-
+                    =If(ctxInventory > 0, UpdateContext({ctxInventory: ctxInventory - 1}));
+                PaddingBottom: =15
+                PaddingLeft: =15
+                PaddingTop: =15
+                TabIndex: =0
+                Tooltip: =If(ctxInventory > 0, varLabels.ItemScreen_SubStract, varLabels.ItemScreen_SubStractBlocked)
+                Transparency: =If(ctxInventory <= 0, 70%, 0)
+                Width: =90
+                ZIndex: =9
+
+        btnSubChanges As button:
+            BorderThickness: =0
+            DisabledColor: =RGBA(255, 255, 255, 1)
+            DisabledFill: =varTheme.brandColor
+            DisplayMode: =If(And(ctxInventory >= 0, ctxInventory <= 99999), DisplayMode.Edit, DisplayMode.Disabled)
+            Fill: =varTheme.brandColor
+            Font: =varTheme.font
+            Height: =220
+            HoverBorderColor: =Self.Fill
+            HoverFill: =Self.Fill
+            LayoutMinHeight: =70
+            LayoutMinWidth: =280
+            OnSelect: |
+                =UpdateContext({ctxShowLoadingScreen: true, ctxShouldShowError: false});
+                
+                IfError(Set(varUpdateItemStatus, 
+                                UpdateItemInventoryForLocation.Run(varScannedItem.id, ctxInventory, varSelectedWarehouse.code)
+                            ),
+                    // Parse error message
+                    UpdateContext({ctxShouldShowError: true, ctxErrorMessage: FirstError.Message});
+                    Trace("Inventory update failed for " &varScannedItem.DisplayName, TraceSeverity.Error, FirstError);    
+                );
+                
+                If(And(Not(ctxShouldShowError), Not(varUpdateItemStatus.success)),
+                    UpdateContext({ctxShouldShowError: true, ctxErrorMessage: "Error while updating item - see the 'UpdateItemInventoryForLocation' flow for more information"});
+                );
+                
+                If(ctxShouldShowError, 
+                    Notify(ctxErrorMessage, NotificationType.Error);   
+                    UpdateContext({ctxShowLoadingScreen: false, ctxShouldShowError: false });
+                    ,
+                    Navigate('Item updated screen', ScreenTransition.Fade);
+                );
+            RadiusBottomLeft: =Self.Width / 2
+            RadiusBottomRight: =Self.Width / 2
+            RadiusTopLeft: =Self.Width / 2
+            RadiusTopRight: =Self.Width / 2
+            Size: =24
+            Text: =varLabels.ItemScreen_Submit
+            Width: =220
+            X: =Parent.Width/2 - Self.Width/2
+            Y: =Parent.Height - Self.Height - 20
+            ZIndex: =5
+
+    conLoadingOverlay As groupContainer.manualLayoutContainer:
+        Fill: =RGBA(226, 248, 255, 50%)
+        Height: =Parent.Height
+        Visible: =ctxShowLoadingScreen
+        Width: =Parent.Width
+        ZIndex: =2
+
+        imgLoadingSubmit As image:
+            Image: =Spinner_LightBlue_2x
+            X: =Parent.Width/2 - Self.Width/2
+            Y: =Parent.Height/2 - Self.Height/2
+            ZIndex: =1
+
+    BarcodeScannerControl As barcodeScanner:
+        BorderThickness: =0
+        Fill: =varTheme.brandColor
+        Font: =varTheme.font
+        FontWeight: =FontWeight.Normal
+        Height: =50
+        HoverBorderColor: =Color.Black
+        HoverColor: =RGBA(0, 0, 0, 1)
+        HoverFill: =RGBA(255, 255, 255, 1)
+        OnCancel: =Navigate('Start Screen', ScreenTransition.Fade);
+        OnScan: |-
+            =UpdateContext({ctxErrorOnItemLookup: false, ctxShowLoadingScreen: true, ctxScannedCode: Self.Value});
+            
+            // Check barcode format
+            If(Len(ctxScannedCode) > 14,
+                UpdateContext({ctxErrorOnItemLookup: true});
+                Trace("Wrong code format: "& ctxScannedCode, NotificationType.Error);
+            );
+            
+            If(Not(ctxErrorOnItemLookup),
+                // Find matching Business Central Item 
+                IfError(Set(varScannedItem, LookUp('warehouseItemsWithImage (businessCentralDemos/warehouseHelper/beta)', GTIN = ctxScannedCode )), 
+                    UpdateContext({ctxErrorOnItemLookup: true});
+                    Trace("Error trying to lookup item: "& ctxScannedCode, TraceSeverity.Error, FirstError);
+                )
+            );
+            
+            If(Or(ctxErrorOnItemLookup, IsBlank(varScannedItem)), 
+                Navigate('Not Found Screen')
+                , 
+                UpdateContext({ctxShowLoadingScreen: false});
+            );
+        RadiusBottomLeft: =350
+        RadiusBottomRight: =350
+        RadiusTopLeft: =350
+        RadiusTopRight: =350
+        Size: =22
+        Text: ="0"
+        Visible: =false
+        Width: =50
+        ZIndex: =3
+
+    btnTriggerBarcodeScanner As button:
+        Height: =50
+        OnSelect: |-
+            =// Work around to see if we are in the browser or on a mobile device
+            Set(varIsBrowser, IsBlank(Acceleration.X));
+            If(varIsBrowser,
+                // Barcode scanner is only supported for devices - fallback to test page in web    
+                Navigate('Web scan test screen');
+                ,
+                UpdateContext({ctxShowLoadingScreen: true, ctxInventory: 0});
+                Select(BarcodeScannerControl)
+            )
+        Size: =24
+        Text: ="Button"
+        Visible: =false
+        Width: =50
+        ZIndex: =4
+

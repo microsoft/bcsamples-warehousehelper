@@ -1,6 +1,6 @@
-table 70010 "TO - Labels"
+table 70020 "WH - Labels"
 {
-    Caption = 'Take Order - Labels';
+    Caption = 'Warehouse helper - Labels';
     DataClassification = SystemMetadata;
     ReplicateData = false;
     TableType = "temporary";
@@ -30,9 +30,5 @@ table 70010 "TO - Labels"
         {
             Clustered = true;
         }
-    }
-
-    fieldgroups
-    {
     }
 }

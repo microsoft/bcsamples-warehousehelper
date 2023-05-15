@@ -1,0 +1,36 @@
+"'Debug screen' As screen":
+
+    Button1 As button:
+        Height: =70
+        OnSelect: |-
+            =Set(varWarehouses, 'warehouses (businessCentralDemos/warehouseHelper/beta)');
+            Set(varTestFirst, First(varWarehouses))
+        Size: =24
+        Text: ="Button"
+        Width: =280
+        X: =210
+        Y: =561
+        ZIndex: =1
+
+    htmlItemDetailsImageShadow_1 As htmlViewer:
+        Height: =imgItemImage.Height + 5    
+        HtmlText: |+
+            ="<div style='
+            height: " & Self.Height - 20 & "px;   
+            width: " & Self.Width - 20 & "px;   
+            box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1);
+            margin-left: 10px;
+            margin-top: 10px;
+            '></div>
+            "
+            
+        PaddingBottom: =0
+        PaddingLeft: =0
+        PaddingRight: =0
+        PaddingTop: =0
+        Tooltip: =
+        Width: =imgItemImage.Width + 5
+        X: =121
+        Y: =357
+        ZIndex: =2
+

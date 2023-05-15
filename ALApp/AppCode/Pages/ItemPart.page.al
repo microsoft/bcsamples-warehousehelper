@@ -1,8 +1,8 @@
-page 70015 "TO - ItemListPart"
+page 70025 "WH - ItemListPart"
 {
     PageType = ListPart;
     SourceTable = Item;
-    SourceTableView = where(SoldInRestaurant = const(true));
+    SourceTableView = where(GTIN = filter(<> ''));
 
     layout
     {
@@ -18,23 +18,7 @@ page 70015 "TO - ItemListPart"
                 {
                     ApplicationArea = All;
                 }
-                field(ItemPrice; Rec."Unit Price")
-                {
-                    ApplicationArea = All;
-                }
-                field("Item Category Code"; Rec."Item Category Code")
-                {
-                    ApplicationArea = All;
-                }
-                field("longDescription"; Rec.LongItemDescription)
-                {
-                    ApplicationArea = All;
-                }
-                field(AllergenInformation; Rec.AllergenInformation)
-                {
-                    ApplicationArea = All;
-                }
-                field(showInPowerApp; Rec.SoldInRestaurant)
+                field(GTIN; Rec.GTIN)
                 {
                     ApplicationArea = All;
                 }

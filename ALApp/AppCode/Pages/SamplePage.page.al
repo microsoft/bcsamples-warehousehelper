@@ -1,9 +1,9 @@
-page 70010 "TO - SamplePage"
+page 70020 "WH - SamplePage"
 {
     PageType = Card;
     ApplicationArea = All;
     UsageCategory = Administration;
-    Caption = 'Take Order sample data';
+    Caption = 'Warehouse Helper sample data';
 
     layout
     {
@@ -11,18 +11,13 @@ page 70010 "TO - SamplePage"
         {
             label(Processing)
             {
-                Caption = 'This is a sample page to generate and delete data for the Take Order PowerApp';
+                Caption = 'This is a sample page to generate data for the Warehouse Helper PowerApp';
             }
-            part(PowerAppCustomers; "TO - CustomerListPart")
+            part(itempart; "WH - ItemListPart")
             {
+                ApplicationArea = All;
                 Editable = false;
-                Caption = 'Tables - Customers';
-            }
-
-            part(PowerAppItems; "TO - ItemListPart")
-            {
-                Editable = false;
-                Caption = 'Restuarant - Items';
+                Caption = 'Items with GTIN numbers';
             }
         }
     }
@@ -35,33 +30,18 @@ page 70010 "TO - SamplePage"
             {
 
             }
-            actionref(PromotedDeleteTestData; DeleteTestData)
-            {
-
-            }
         }
         area(Processing)
         {
             action(GenerateTestData)
             {
                 ApplicationArea = All;
-                Caption = 'Generate sample Data';
+                Caption = 'Update Items with GTIN numbers';
                 trigger OnAction()
                 var
-                    sampleDataGenerator: Codeunit "TO - SampleDataGenerator";
+                    sampleDataGenerator: Codeunit "WH - SampleDataGenerator";
                 begin
                     sampleDataGenerator.GenerateDemoDataForPowerApps();
-                end;
-            }
-            action(DeleteTestData)
-            {
-                ApplicationArea = All;
-                Caption = 'Delete sample Data';
-                trigger OnAction()
-                var
-                    sampleDataGenerator: Codeunit "TO - SampleDataGenerator";
-                begin
-                    sampleDataGenerator.DeleteDemoDataForPowerApps();
                 end;
             }
         }

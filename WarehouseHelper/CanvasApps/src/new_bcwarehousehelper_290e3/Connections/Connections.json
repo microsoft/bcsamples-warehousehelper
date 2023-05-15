@@ -1,0 +1,83 @@
+{
+  "10b3a6a1-fe69-4328-a0c7-e2fe59f21a2d": {
+    "connectionRef": {
+      "displayName": "Logic flows",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1615/1.0.1615.3163/logicflows/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
+      "parameterHints": {
+        "fc5cc552-9879-4472-be2f-2efce8c414bd": {
+          "value": "shared_dynamicssmbsaas"
+        },
+        "workflowEntityId": {
+          "value": "c84ed00d-d4e4-ed11-a7c6-000d3a991110"
+        },
+        "workflowName": {
+          "value": "f84e883c-cb55-49f1-adea-d24602cb85a4"
+        }
+      },
+      "parameterHintsV2": {
+        "shared_dynamicssmbsaas": {
+          "value": "fc5cc552-9879-4472-be2f-2efce8c414bd"
+        },
+        "workflowEntityId": {
+          "value": "c84ed00d-d4e4-ed11-a7c6-000d3a991110"
+        },
+        "workflowName": {
+          "value": "f84e883c-cb55-49f1-adea-d24602cb85a4"
+        }
+      }
+    },
+    "datasets": {},
+    "dataSources": [
+      "UpdateItemInventoryForLocation"
+    ],
+    "dependencies": {
+      "shared_dynamicssmbsaas": "fc5cc552-9879-4472-be2f-2efce8c414bd"
+    },
+    "dependents": [],
+    "id": "10b3a6a1-fe69-4328-a0c7-e2fe59f21a2d"
+  },
+  "fc5cc552-9879-4472-be2f-2efce8c414bd": {
+    "connectionRef": {
+      "apiTier": "Premium",
+      "displayName": "Dynamics 365 Business Central",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1624/1.0.1624.3220/dynamicssmbsaas/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_dynamicssmbsaas",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {
+      "PowerApps,dc50d5e8-f9c9-ed11-94cc-000d3a220b2f": {
+        "dataSources": {
+          "languageResources (businessCentralDemos/warehouseHelper/beta)": {
+            "tableName": "languageResources,businessCentralDemos%252FwarehouseHelper%252Fbeta"
+          },
+          "localeInformation (businessCentralDemos/warehouseHelper/beta)": {
+            "tableName": "localeInformation,businessCentralDemos%252FwarehouseHelper%252Fbeta"
+          },
+          "locations (v2.0)": {
+            "tableName": "locations,v2.0"
+          },
+          "warehouseItemsWithImage (businessCentralDemos/warehouseHelper/beta)": {
+            "tableName": "warehouseItemsWithImage,businessCentralDemos%252FwarehouseHelper%252Fbeta"
+          },
+          "warehouses (businessCentralDemos/warehouseHelper/beta)": {
+            "tableName": "warehouses,businessCentralDemos%252FwarehouseHelper%252Fbeta"
+          }
+        }
+      }
+    },
+    "dataSources": [
+      "locations (v2.0)",
+      "languageResources (businessCentralDemos/warehouseHelper/beta)",
+      "localeInformation (businessCentralDemos/warehouseHelper/beta)",
+      "warehouseItemsWithImage (businessCentralDemos/warehouseHelper/beta)",
+      "warehouses (businessCentralDemos/warehouseHelper/beta)"
+    ],
+    "dependencies": {},
+    "dependents": [
+      "10b3a6a1-fe69-4328-a0c7-e2fe59f21a2d"
+    ],
+    "id": "fc5cc552-9879-4472-be2f-2efce8c414bd"
+  }
+}

@@ -1,0 +1,78 @@
+"'Not Found Screen' As screen":
+    Fill: =varTheme.secondaryColor
+    OnVisible: =
+
+    conNotFoundContent As groupContainer.verticalAutoLayoutContainer:
+        Height: =Parent.Height - 70 - Self.Y
+        LayoutAlignItems: =LayoutAlignItems.Center
+        LayoutDirection: =LayoutDirection.Vertical
+        LayoutGap: =100
+        LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+        LayoutMode: =LayoutMode.Auto
+        PaddingLeft: =100
+        PaddingRight: =100
+        Width: =Parent.Width
+        Y: =180
+        ZIndex: =1
+
+        imgNotFound As image:
+            Height: =175
+            Image: ='not found icon'
+            LayoutMinHeight: =320
+            LayoutMinWidth: =320
+            Width: =175
+            ZIndex: =1
+
+        conNotFoudText As groupContainer.manualLayoutContainer:
+            FillPortions: =0
+            Height: =250
+            LayoutMinHeight: =112
+            LayoutMinWidth: =250
+            ZIndex: =2
+
+            lblNotFoundDescription As label:
+                Color: =varTheme.darkTextColor
+                Height: =160
+                LineHeight: =1.4
+                Size: =21
+                Text: =varLabels.NotFoundScreen_Text
+                Width: =439
+                Y: =lblNotFoundTitle.Height
+                ZIndex: =1
+
+            lblNotFoundTitle As label:
+                Color: =varTheme.darkTextColor
+                Font: =Font.'Segoe UI'
+                FontWeight: =FontWeight.Semibold
+                Height: =100
+                LineHeight: =1.4
+                Size: =28
+                Text: =varLabels.NotFoundScreen_Title
+                Width: =360
+                ZIndex: =2
+
+        btnScanNewItem As button:
+            BorderThickness: =0
+            Color: =Color.White
+            DisabledColor: =RGBA(255, 255, 255, 1)
+            DisabledFill: =RGBA(237, 237, 237, 1)
+            Fill: =varTheme.brandColor
+            Font: =varTheme.font
+            FontWeight: =FontWeight.Normal
+            Height: =220
+            HoverFill: =Self.Fill
+            LayoutMinHeight: =70
+            LayoutMinWidth: =280
+            OnSelect: |-
+                =Navigate('Item Screen', ScreenTransition.Fade, {ctxStartScan: true});
+            RadiusBottomLeft: =Self.Width / 2
+            RadiusBottomRight: =Self.Width / 2
+            RadiusTopLeft: =Self.Width / 2
+            RadiusTopRight: =Self.Width / 2
+            Size: =26
+            Text: =varLabels.NotFoundScreen_Scan
+            Width: =220
+            X: =Parent.Width/2 - Self.Width/2
+            Y: =Parent.Height - Self.Height - 20
+            ZIndex: =3
+

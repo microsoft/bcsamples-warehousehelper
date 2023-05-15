@@ -1,0 +1,166 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_dynamicssmbsaas": {
+        "runtimeSource": "invoker",
+        "connection": {
+          "connectionReferenceLogicalName": "new_bc"
+        },
+        "api": {
+          "name": "shared_dynamicssmbsaas"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "1069a9d8-e821-4877-b235-ebe7ef805ebe"
+          },
+          "type": "Request",
+          "kind": "PowerAppV2",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "title": "ItemId",
+                  "type": "string",
+                  "x-ms-dynamically-added": true,
+                  "description": "Please enter your input",
+                  "x-ms-content-hint": "TEXT"
+                },
+                "number": {
+                  "title": "NewInventoryValue",
+                  "type": "number",
+                  "x-ms-dynamically-added": true,
+                  "description": "Please enter a number",
+                  "x-ms-content-hint": "NUMBER"
+                },
+                "text_1": {
+                  "title": "LocationCode",
+                  "type": "string",
+                  "x-ms-dynamically-added": true,
+                  "description": "Please enter your input",
+                  "x-ms-content-hint": "TEXT"
+                }
+              },
+              "required": [
+                "text",
+                "number",
+                "text_1"
+              ]
+            }
+          }
+        }
+      },
+      "actions": {
+        "Run_action_(V3)": {
+          "runAfter": {
+            "Initialize_variable": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "ade4c2a6-17e2-4cc8-beb9-e605406d233a"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_dynamicssmbsaas",
+              "operationId": "ExecuteProcedureV3",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_dynamicssmbsaas"
+            },
+            "parameters": {
+              "bcenvironment": "PowerApps",
+              "company": "dc50d5e8-f9c9-ed11-94cc-000d3a220b2f",
+              "dataset": "businessCentralDemos/warehouseHelper/beta",
+              "procedure": "warehouseItemWithImage-updateInventoryForLocation",
+              "parameters/id": "@triggerBody()['text']",
+              "parameters/locationCode": "@triggerBody()['text_1']",
+              "parameters/newInventoryValue": "@triggerBody()['number']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Respond_to_a_PowerApp_or_flow": {
+          "runAfter": {
+            "Set_variable": [
+              "Succeeded",
+              "Skipped"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "e057c471-363d-4c25-930a-332b0fc2f18e"
+          },
+          "type": "Response",
+          "kind": "PowerApp",
+          "inputs": {
+            "statusCode": 200,
+            "body": {
+              "success": "@variables('FlowStatus_succes')"
+            },
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "title": "success",
+                  "x-ms-dynamically-added": true,
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        },
+        "Initialize_variable": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "61d44bcc-d087-4cda-a6ac-af06ee3fbb87"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "FlowStatus_succes",
+                "type": "boolean",
+                "value": true
+              }
+            ]
+          }
+        },
+        "Set_variable": {
+          "runAfter": {
+            "Run_action_(V3)": [
+              "Failed",
+              "Skipped",
+              "TimedOut"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "93de2aa6-fd1c-44f9-baf8-22dff0cca955"
+          },
+          "type": "SetVariable",
+          "inputs": {
+            "name": "FlowStatus_succes",
+            "value": false
+          }
+        }
+      },
+      "outputs": {}
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

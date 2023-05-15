@@ -1,0 +1,18 @@
+{
+  "QualifiedValues": [
+    {
+      "Kind": "default.cds_cr156_temp_warehouse_forms",
+      "Namespace": "temp_warehouses (Forms)",
+      "Values": {
+        "Information": "aebea57d-6f9b-4f62-88e5-61056ac538cf"
+      }
+    },
+    {
+      "Kind": "default.cds_cr156_temp_warehouse_forms",
+      "Namespace": "temp_warehouses (Formularer)",
+      "Values": {
+        "Information": "aebea57d-6f9b-4f62-88e5-61056ac538cf"
+      }
+    }
+  ]
+}
