@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CanvasApp xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>new_bcwarehousehelper_290e3</Name>
+  <AppVersion>2023-05-15T10:02:22Z</AppVersion>
+  <Status>Ready</Status>
+  <CreatedByClientVersion>3.23044.18.0</CreatedByClientVersion>
+  <MinClientVersion>3.23044.18.0</MinClientVersion>
+  <Tags>{"primaryDeviceWidth":"640","primaryDeviceHeight":"1136","supportsPortrait":"true","supportsLandscape":"false","primaryFormFactor":"Phone","publisherVersion":"3.23044.18","minimumRequiredApiVersion":"2.2.0","hasComponent":"true","hasUnlockedComponent":"true","isUnifiedRootApp":"false","sienaVersion":"20230510T144156Z-3.23044.17.0"}</Tags>
+  <IsCdsUpgraded>0</IsCdsUpgraded>
+  <GalleryItemId xsi:nil="true"></GalleryItemId>
+  <BackgroundColor>rgba(255, 255, 255, 1)</BackgroundColor>
+  <DisplayName>Warehouse Helper</DisplayName>
+  <Description>Test app for Business Central to help manage warehouse inventory</Description>
+  <CommitMessage xsi:nil="true"></CommitMessage>
+  <Publisher></Publisher>
+  <AuthorizationReferences>[]</AuthorizationReferences>
+  <ConnectionReferences>{"fc5cc552-9879-4472-be2f-2efce8c414bd":{"id":"/providers/microsoft.powerapps/apis/shared_dynamicssmbsaas","displayName":"Dynamics 365 Business Central","iconUri":"https://connectoricons-prod.azureedge.net/releases/v1.0.1624/1.0.1624.3220/dynamicssmbsaas/icon.png","dataSources":["locations (v2.0)","languageResources (businessCentralDemos/warehouseHelper/beta)","localeInformation (businessCentralDemos/warehouseHelper/beta)","warehouseItemsWithImage (businessCentralDemos/warehouseHelper/beta)","warehouses (businessCentralDemos/warehouseHelper/beta)"],"dependencies":[],"dependents":["10b3a6a1-fe69-4328-a0c7-e2fe59f21a2d"],"parameterHints":{},"parameterHintsV2":{},"isOnPremiseConnection":false,"bypassConsent":false,"dataSets":{"PowerApps,dc50d5e8-f9c9-ed11-94cc-000d3a220b2f":{"dataSources":{"locations (v2.0)":{"tableName":"locations,v2.0"},"languageResources (businessCentralDemos/warehouseHelper/beta)":{"tableName":"languageResources,businessCentralDemos%252FwarehouseHelper%252Fbeta"},"localeInformation (businessCentralDemos/warehouseHelper/beta)":{"tableName":"localeInformation,businessCentralDemos%252FwarehouseHelper%252Fbeta"},"warehouseItemsWithImage (businessCentralDemos/warehouseHelper/beta)":{"tableName":"warehouseItemsWithImage,businessCentralDemos%252FwarehouseHelper%252Fbeta"},"warehouses (businessCentralDemos/warehouseHelper/beta)":{"tableName":"warehouses,businessCentralDemos%252FwarehouseHelper%252Fbeta"}}}},"apiTier":"Premium","actions":["providers/PowerPlatform.Governance/Operations/Read"]},"10b3a6a1-fe69-4328-a0c7-e2fe59f21a2d":{"id":"/providers/microsoft.powerapps/apis/shared_logicflows","displayName":"Logic flows","iconUri":"https://connectoricons-prod.azureedge.net/releases/v1.0.1615/1.0.1615.3163/logicflows/icon.png","dataSources":["UpdateItemInventoryForLocation"],"dependencies":["fc5cc552-9879-4472-be2f-2efce8c414bd"],"dependents":[],"parameterHints":{"workflowName":{"value":"42f08ca6-2ac0-479d-a613-13af8b4e0c00"},"workflowEntityId":{"value":"c84ed00d-d4e4-ed11-a7c6-000d3a991110"},"fc5cc552-9879-4472-be2f-2efce8c414bd":{"value":"shared_dynamicssmbsaas"}},"parameterHintsV2":{"workflowName":{"value":"42f08ca6-2ac0-479d-a613-13af8b4e0c00"},"workflowEntityId":{"value":"c84ed00d-d4e4-ed11-a7c6-000d3a991110"},"shared_dynamicssmbsaas":{"value":"fc5cc552-9879-4472-be2f-2efce8c414bd"}},"isOnPremiseConnection":false,"bypassConsent":false,"dataSets":{},"apiTier":"Standard","actions":["Run"]}}</ConnectionReferences>
+  <DatabaseReferences>{}</DatabaseReferences>
+  <AppComponents>[]</AppComponents>
+  <AppComponentDependencies>[]</AppComponentDependencies>
+  <CanConsumeAppPass>1</CanConsumeAppPass>
+  <CanvasAppType>0</CanvasAppType>
+  <BypassConsent>0</BypassConsent>
+  <AdminControlBypassConsent>0</AdminControlBypassConsent>
+  <EmbeddedApp xsi:nil="true"></EmbeddedApp>
+  <IntroducedVersion>1.0</IntroducedVersion>
+  <CdsDependencies>{"cdsdependencies":[{"dependencyid":"c84ed00d-d4e4-ed11-a7c6-000d3a991110","componenttype":29,"componenttypeplatformname":"Workflow"}]}</CdsDependencies>
+  <IsCustomizable>1</IsCustomizable>
+  <BackgroundImageUri>/CanvasApps/new_bcwarehousehelper_290e3_BackgroundImageUri</BackgroundImageUri>
+  <DocumentUri>/CanvasApps/new_bcwarehousehelper_290e3_DocumentUri.msapp</DocumentUri>
+</CanvasApp>

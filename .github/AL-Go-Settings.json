@@ -1,7 +1,7 @@
 {
   "type": "PTE",
   "templateUrl": "https://github.com/microsoft/AL-Go-PTE@PPPreview",
-  "powerPlatformSolutionFolder": "TakeOrder",
+  "powerPlatformSolutionFolder": "WarehouseHelper",
   "environments": [
     "andersg (Production)",
     "UX (Production)",

@@ -1,0 +1,173 @@
+"'Start Screen' As screen":
+    Fill: =varTheme.brandColor
+    OnVisible: |+
+        =
+        
+
+    conStartScreenContent As groupContainer.verticalAutoLayoutContainer:
+        Height: =Parent.Height - 100
+        LayoutAlignItems: =LayoutAlignItems.Center
+        LayoutDirection: =LayoutDirection.Vertical
+        LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+        LayoutMode: =LayoutMode.Auto
+        Width: =Parent.Width * 0.9
+        X: =Parent.Width/2 - Self.Width/2
+        Y: =30
+        ZIndex: =22
+
+        conUserName As groupContainer.manualLayoutContainer:
+            FillPortions: =0
+            Height: =100
+            LayoutMinHeight: =112
+            LayoutMinWidth: =250
+            ZIndex: =1
+
+            lblUserNameValue As label:
+                Align: =Align.Center
+                Color: =RGBA(255, 255, 255, 1)
+                Font: =varTheme.font
+                FontWeight: =FontWeight.Semibold
+                Height: =53
+                Size: =21
+                Text: =User().FullName
+                Width: =560
+                X: =Parent.Width/2 - Self.Width/2
+                Y: =lblUserName.Height
+                ZIndex: =1
+
+            lblUserName As label:
+                Align: =Align.Center
+                Color: =RGBA(255, 255, 255, 1)
+                Font: =varTheme.font
+                Height: =47
+                Size: =21
+                Text: =varLabels.StartScreen_User
+                Width: =560
+                X: =Parent.Width/2 - Self.Width/2
+                ZIndex: =2
+
+        imgStartLogo As image:
+            Height: =200 
+            Image: ='warehouse helper logo'
+            LayoutMinHeight: =320
+            LayoutMinWidth: =320
+            Width: =Self.Height
+            X: =Parent.Width/2 - Self.Width/2
+            Y: =80
+            ZIndex: =2
+
+        imgLogoText As image:
+            Image: ='Warehouse Helper_logotype_x2'
+            LayoutMinHeight: =320
+            LayoutMinWidth: =320
+            Width: =320
+            ZIndex: =3
+
+        conLocationSelector As groupContainer.verticalAutoLayoutContainer:
+            AlignInContainer: =AlignInContainer.Center
+            FillPortions: =0
+            Height: =conLocationSelectorControl.Height + recLocationTopDivider.Height * 2
+            LayoutAlignItems: =LayoutAlignItems.Center
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutMinHeight: =112
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            Width: =Parent.Width
+            ZIndex: =4
+
+            recLocationTopDivider As rectangle:
+                Fill: =RGBA(255, 255, 255, 0.5)
+                Height: =2
+                Width: =Parent.Width
+                ZIndex: =1
+
+            conLocationSelectorControl As groupContainer.manualLayoutContainer:
+                FillPortions: =0
+                Height: =120 
+                LayoutMinHeight: =112
+                LayoutMinWidth: =250
+                ZIndex: =3
+
+                lblLocationValue As label:
+                    Align: =Align.Right
+                    Color: =RGBA(255, 255, 255, 1)
+                    Font: =varTheme.font
+                    FontWeight: =FontWeight.Semibold
+                    Height: =70
+                    Size: =21
+                    Text: =varSelectedWarehouse.displayName
+                    Width: =Min(Len(Self.Text) * 18, 400)
+                    X: =Parent.Width/2 - Self.Width/2 - imgChevron.Width/2
+                    Y: =Parent.Height/2 - Self.Height/2
+                    ZIndex: =1
+
+                imgChevron As image:
+                    Height: =80
+                    Image: ='warehouse name arrow'
+                    PaddingBottom: =10
+                    PaddingLeft: =10
+                    PaddingRight: =10
+                    PaddingTop: =10
+                    Width: =80
+                    X: =lblLocationValue.X + lblLocationValue.Width
+                    Y: =20
+                    ZIndex: =2
+
+                btnSelectLocationOverlay As button:
+                    Fill: =RGBA(0, 0, 0, 0)
+                    FontWeight: =FontWeight.Normal
+                    Height: =Parent.Height
+                    HoverFill: =Color.Transparent
+                    OnSelect: =Navigate('Select Warehouse Screen', ScreenTransition.Cover);
+                    PressedFill: =Color.Transparent
+                    Size: =24
+                    Text: =""
+                    Width: =Parent.Width
+                    ZIndex: =3
+
+            recLocationBottomDivider As rectangle:
+                Fill: =RGBA(255, 255, 255, 0.5)
+                Height: =2
+                Width: =Parent.Width
+                Y: =60
+                ZIndex: =4
+
+        btnScanItem As button:
+            BorderThickness: =0
+            Color: =varTheme.brandColor
+            DisabledColor: =RGBA(255, 255, 255, 1)
+            DisabledFill: =RGBA(237, 237, 237, 1)
+            Fill: =varTheme.secondaryColor
+            Font: =varTheme.font
+            Height: =220
+            HoverColor: =Self.Color
+            HoverFill: =Self.Fill
+            LayoutMinHeight: =70
+            LayoutMinWidth: =280
+            OnSelect: |-
+                =Navigate('Item Screen', ScreenTransition.Fade, {ctxStartScan: true});
+            PressedColor: =Self.Color
+            PressedFill: =Self.Fill
+            RadiusBottomLeft: =Self.Width / 2
+            RadiusBottomRight: =Self.Width / 2
+            RadiusTopLeft: =Self.Width / 2
+            RadiusTopRight: =Self.Width / 2
+            Size: =24
+            Text: =varLabels.StartScreen_Scan
+            Width: =220
+            X: =Parent.Width/2 - Self.Width/2
+            Y: =Parent.Height - Self.Height - 20
+            ZIndex: =5
+
+    imgOpenInfoPage As image:
+        AccessibleLabel: =Self.Tooltip
+        Image: ='info page white icon'
+        OnSelect: =Navigate('Info Screen', ScreenTransition.Cover)
+        PaddingBottom: =20
+        PaddingLeft: =20
+        PaddingRight: =20
+        PaddingTop: =20
+        TabIndex: =0
+        X: =Parent.Width - Self.Width - 20
+        ZIndex: =23
+

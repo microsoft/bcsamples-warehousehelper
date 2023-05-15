@@ -1,15 +1,12 @@
-permissionset 70010 "TO - Permission"
+permissionset 70020 "WH - Permission"
 {
     Assignable = true;
-    Permissions = tabledata "TO - Labels" = RIMD,
-        table "TO - Labels" = X,
-        codeunit "TO - LabelManagement" = X,
-        codeunit "TO - SampleDataGenerator" = X,
-        codeunit "TO - ItemImages" = X,
-        page "TO - Tables" = X,
-        page "TO - ItemWithImage" = X,
-        page "TO - LanguageResources" = X,
-        page "TO - SamplePage" = X,
-        page "TO - CustomerListPart" = X,
-        page "TO - ItemListPart" = X;
+    Permissions = tabledata "WH - Labels" = RIMD,
+        table "WH - Labels" = X,
+        codeunit "WH - LabelManagement" = X,
+        codeunit "WH - SampleDataGenerator" = X,
+        page "WH - Warehouses" = X,
+        page "WH - WarehouseItemWithImage" = X,
+        page "WH - LanguageResources" = X,
+        page "WH - SamplePage" = X;
 }
