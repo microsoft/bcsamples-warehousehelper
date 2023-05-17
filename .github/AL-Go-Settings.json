@@ -1,6 +1,6 @@
 {
   "type": "PTE",
-  "templateUrl": "https://github.com/BusinessCentralDemos/AL-Go-PTE@main",
+  "templateUrl": "https://github.com/Microsoft/AL-Go-PTE@main",
   "powerPlatformSolutionFolder": "WarehouseHelper",
   "environments": [
     "Dev (Production)",
