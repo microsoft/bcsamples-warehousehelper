@@ -26,7 +26,7 @@ defaults:
 
 jobs:
   PullChanges:
-    runs-on: [windows-latest]
+    runs-on: [ubuntu-latest]
     name: Pull changes from ${{ inputs.environment }}
     steps:
       - name: Checkout
