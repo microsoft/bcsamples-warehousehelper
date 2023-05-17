@@ -36,12 +36,12 @@ jobs:
         id: init
         uses: microsoft/AL-Go-Actions/WorkflowInitialize@PPPreview
         with:
-          shell: powershell
+          shell: pwsh
           eventId: "DO0103"
 
       - name: EnvName
         id: envName
-        shell: powershell
+        shell: pwsh
         run: |
           $ErrorActionPreference = "STOP"
           Set-StrictMode -version 2.0
@@ -51,14 +51,14 @@ jobs:
       - name: Read settings
         uses: microsoft/AL-Go-Actions/ReadSettings@PPPreview
         with:
-          shell: powershell
+          shell: pwsh
 
       - name: Read secrets
         uses: microsoft/AL-Go-Actions/ReadSecrets@PPPreview
         env:
           secrets: ${{ toJson(secrets) }}
         with:
-          shell: powershell
+          shell: pwsh
           settingsJson: ${{ env.Settings }}
           secrets: "${{ steps.envName.outputs.envName }}-AuthContext,${{ steps.envName.outputs.envName }}_AuthContext,AuthContext,${{ steps.envName.outputs.envName }}-EnvironmentName,${{ steps.envName.outputs.envName }}_EnvironmentName,EnvironmentName,projects"
       
@@ -66,13 +66,13 @@ jobs:
         id: authContext
         uses: microsoft/AL-Go-Actions/ReadAuthContext@PPPreview
         with:
-          shell: powershell
+          shell: pwsh
           envName: ${{ steps.envName.outputs.envName }}
           environment: ${{ steps.envName.outputs.envName }}
 
       - name: Set Power Platform solution name
         id: solutionName
-        shell: powershell
+        shell: pwsh
         env: 
           _inputSolutionName: ${{ inputs.solutionName }}
         run: |
@@ -89,7 +89,7 @@ jobs:
       - name: Export changes from Power Platform 
         uses: microsoft/AL-Go-Actions/PullPowerPlatformChanges@PPPreview
         with: 
-          shell: powershell
+          shell: pwsh
           solutionName: ${{ env.powerPlatformSolutionFolder }}
           directCommit: ${{ inputs.directCommit == 'Y' }}
           deploySettings: ${{ env.deployTo }} 
@@ -99,6 +99,6 @@ jobs:
         if: always()
         uses: microsoft/AL-Go-Actions/WorkflowPostProcess@PPPreview
         with:
-          shell: powershell
+          shell: pwsh
           eventId: "DO0103"
           telemetryScopeJson: ${{ steps.init.outputs.telemetryScopeJson }}
