@@ -1,7 +1,7 @@
 {
   "type": "PTE",
   "templateUrl": "https://github.com/BusinessCentralDemos/AL-Go-PTE@main",
-  "powerPlatformSolutionFolder": "TakeOrder",
+  "powerPlatformSolutionFolder": "WarehouseHelper",
   "environments": [
     "Dev (Production)",
     "UX (Production)", 
