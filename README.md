@@ -2,7 +2,7 @@
 
 The Warehouse Helper sample consists of an AL extension, a Power App, and a Power Automate flow. The app can scan a barcode and attempt to map the value to a Business Central item's GTIN property.
 
-The AL Extension adds relevant APIs to Business Central and includes a sample data page called **Warehouse Helper sample data**. The sample page has an action that adds GTIN values to a set of items that match the [Sample barcodes](https://github.com/microsoft/businesscentralsamples-waarehousehelper/blob/main/SampleBarCodes/Sample%20Barcodes.pdf).
+The AL Extension adds relevant APIs to Business Central and includes a sample data page called **Warehouse Helper sample data**. The sample page has an action that adds GTIN values to a set of items that match the [Sample barcodes](https://github.com/microsoft/bcsamples-warehousehelper/blob/main/SampleBarCodes/Sample%20Barcodes.pdf).
 
 ## Try the sample yourself
 
