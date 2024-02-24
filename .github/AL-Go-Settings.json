@@ -1,6 +1,6 @@
 {
   "type": "PTE",
-  "templateUrl": "https://github.com/Microsoft/AL-Go-PTE@PPPreview",
+  "templateUrl": "https://github.com/andersgMSFT/AL-Go-PTE@PPP",
   "powerPlatformSolutionFolder": "WarehouseHelper",
   "environments": [
     "Monica"
