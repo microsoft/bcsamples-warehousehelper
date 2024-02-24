@@ -3,11 +3,11 @@
   "templateUrl": "https://github.com/andersgMSFT/AL-Go-PTE@PPP",
   "powerPlatformSolutionFolder": "WarehouseHelper",
   "environments": [
-    "Monica"
+    "Dev"
   ],
-  "DeployToMonica": {
-    "environmentName": "DirectionsEmea",
-    "companyId": "4cd1f8a0-5a71-ee11-8182-6045bde9ba07",
-    "ppEnvironmentUrl": "https://org951b5c46.crm4.dynamics.com/"
+  "DeployToDev": {
+    "environmentName": "sandbox",
+    "companyId": "5736fe89-41bc-ee11-907d-6045bdc8c244",
+    "ppEnvironmentUrl": "https://orge092ebff.crm.dynamics.com/"
   }
 }
