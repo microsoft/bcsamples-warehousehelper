@@ -1,6 +1,6 @@
 {
   "type": "PTE",
-  "templateUrl": "https://github.com/Microsoft/AL-Go-PTE@PPPreview",
+  "templateUrl": "https://github.com/Microsoft/al-go-pte@preview",
   "powerPlatformSolutionFolder": "WarehouseHelper",
   "environments": [
     "Staging"
